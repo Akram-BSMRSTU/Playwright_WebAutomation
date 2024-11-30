@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class Hover {
-    String URL = "http://www.automationpractice.pl/index.php";
+    String URL = "https://practice-automation.com/hover/";
     Playwright playwright;
     BrowserType browserType;
     Browser browser;
@@ -31,10 +31,10 @@ public class Hover {
         Thread.sleep(5000);
     }
 
-    @Test(priority = 6)
+    @Test(priority = 1)
     public void Hover() throws InterruptedException {
-//        ElementHandle element  = page.querySelector("//body/div[@id='page']/div[@class='header-container']/header[@id='header']/div/div[@class='container']/div[@class='row']/div[@id='block_top_menu']/ul[@class='sf-menu clearfix menu-content sf-js-enabled sf-arrows']/li[2]/a[1]");
-//       element.hover();
+        ElementHandle element  = page.querySelector("//h3[@id='mouse_over']");
+       element.hover();
         Thread.sleep(5000);
     }
 
