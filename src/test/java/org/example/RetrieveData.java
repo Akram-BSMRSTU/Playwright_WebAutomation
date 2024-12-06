@@ -6,7 +6,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-public class keyboardevent {
+public class RetrieveData {
     String URL = "https://www.tutorialspoint.com/selenium/practice/register.php";
     Playwright playwright;
     BrowserType browserType;
@@ -32,31 +32,10 @@ public class keyboardevent {
         Thread.sleep(5000);
     }
     @Test(priority = 1)
-    public void keyboardtest() throws InterruptedException {
+    public void findattribute() throws InterruptedException {
 //        page.setDefaultTimeout(60000);
         Locator firstname = page.locator("//input[@id='firstname']");
-        firstname.click();
-        page.keyboard().type("akram khan");
-//        Text Validation
-        Assert.assertEquals("akram khan",firstname.inputValue());
-//      select ALL
-        page.keyboard().down("Control");
-        page.keyboard().press("KeyA");
-        page.keyboard().up("Control");
-//        copy all
-        page.keyboard().down("Control");
-        page.keyboard().press("KeyC");
-        page.keyboard().up("Control");
-        Thread.sleep(5000);
-
-
-        page.locator("//input[@id='username']").click();
-
-
-        page.keyboard().down("Control");
-        page.keyboard().press("KeyV");
-        page.keyboard().up("Control");
-        Thread.sleep(5000);
+        System.out.println(firstname.getAttribute("placeholder"));
 
     }
 

@@ -1,13 +1,12 @@
 package org.example;
 
 import com.microsoft.playwright.*;
-import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-public class keyboardevent {
-    String URL = "https://www.tutorialspoint.com/selenium/practice/register.php";
+public class iframe {
+    String URL = "https://www.tutorialspoint.com/selenium/practice/frames.php";
     Playwright playwright;
     BrowserType browserType;
     Browser browser;
@@ -32,32 +31,16 @@ public class keyboardevent {
         Thread.sleep(5000);
     }
     @Test(priority = 1)
-    public void keyboardtest() throws InterruptedException {
+    public void Handleiframe() throws InterruptedException {
 //        page.setDefaultTimeout(60000);
-        Locator firstname = page.locator("//input[@id='firstname']");
-        firstname.click();
-        page.keyboard().type("akram khan");
-//        Text Validation
-        Assert.assertEquals("akram khan",firstname.inputValue());
-//      select ALL
-        page.keyboard().down("Control");
-        page.keyboard().press("KeyA");
-        page.keyboard().up("Control");
-//        copy all
-        page.keyboard().down("Control");
-        page.keyboard().press("KeyC");
-        page.keyboard().up("Control");
-        Thread.sleep(5000);
+        page.frame("frame1");
+        Locator firstname = page.locator("//h1[normalize-space()='Selenium - Automation Practice Form']");
+        System.out.println("Content from iframe"+firstname.textContent());
+//        TO select anything outside iframe
+        page.mainFrame();
 
-
-        page.locator("//input[@id='username']").click();
-
-
-        page.keyboard().down("Control");
-        page.keyboard().press("KeyV");
-        page.keyboard().up("Control");
-        Thread.sleep(5000);
-
+        Locator text = page.locator("//h1[normalize-space()='Frames']");
+        System.out.println("text from outside iframe "+text.textContent());
     }
 
 
