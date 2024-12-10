@@ -29,7 +29,7 @@ public class LoginPage {
         page.navigate(URL);
     }
 
-    @Test(priority = 1, dataProvider = "LoginDataProvider")
+    @Test(priority = 1, dataProvider = "LoginDataProvider",dataProviderClass = CustomDataProvider.class)
     public void login(String username, String password) {
         // Locate elements
         Locator Username = page.locator("//input[@name='username']");
@@ -62,14 +62,7 @@ public class LoginPage {
         }
     }
 
-    @DataProvider(name = "LoginDataProvider")
-    public Object[][] getData() {
-        return new Object[][]{
-                {"student", "Password123"}, // Valid credentials
-                {"invalidUser", "Password143"}, // Invalid credentials
-                {"testUser", "wrongPassword123"} // Invalid credentials
-        };
-    }
+
 
     @AfterSuite
     public void closeBrowser() {
